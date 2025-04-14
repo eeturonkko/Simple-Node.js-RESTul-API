@@ -1,0 +1,29 @@
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('li').forEach((card, i) => {
+  card.style.setProperty('--i', i); }); });
+</script>
+
+<h1>
+  Vuokraamon tietokanta
+</h1>
+<ul>
+  {{#each movies}}
+    <li>
+      <strong>{{title}}</strong>
+      ({{releaseDate}})<br />
+      Directed by:
+      {{director.name}}
+      ({{director.nationality}})<br />
+      Genre:
+      {{genre}}<br />
+      Rating:
+      {{rating}}/10<br />
+      {{#if isAvailable}}
+        <span class="available-yes">Available</span>
+      {{else}}
+        <span class="available-no">Not Available</span>
+      {{/if}}
+    </li>
+  {{/each}}
+</ul>
