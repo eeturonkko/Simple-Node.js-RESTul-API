@@ -33,6 +33,18 @@ app.get("/api/movies/:id", (req, res) => {
 
 app.post("/api/movies", (req, res) => {
   const { title, director, genre, releaseDate, rating, isAvailable } = req.body;
+
+  if (
+    !title ||
+    !director ||
+    !genre ||
+    !releaseDate ||
+    rating === undefined ||
+    isAvailable === undefined
+  ) {
+    return res.status(400).json({ error: "All fields are required." });
+  }
+
   const newMovie = {
     id: movies.length + 1,
     title,
